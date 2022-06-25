@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% set title='assignment4' %}
+{% block title %}{{ title }} Page {% endblock %}
+{% set page = 'assignment4' %}
+{% block content %}
+
+
+    <h1>Users Page</h1>
+
+
+    <div>
+
+    </div>
+
+
+
+
+
+
+<div>
+
+</div>
+
+
+<div class="grid-container">
+      <div class="grid-item">
+        <h1 class="grid-item-header">Insert Form</h1>
+        <p class="grid-item-content">
+        <form action="/insert_user" method="post">
+            <input type="text" name="username" placeholder="Insert Username" required>
+            <input type="text" name="name" placeholder="Insert Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Insert password" required>
+            <input type="submit">
+        </form>
+        </p>
+      </div>
+      <div class="grid-item">
+        <h1 class="grid-item-header">JSON</h1>
+        <p class="grid-item-content"> <button><a href="/users">Get as JSON</a></button></p>
+      </div>
+      <div class="grid-item">
+          <h1 class="grid-item-header">Get Avatar</h1>
+        <div>
+        <h2 class="center">Outer Source Form (Front)</h2>
+        <form id="outer-source__form">
+            <input type="text" name="id" placeholder="Insert ID (1-12)" required>
+            <input type="submit">
+        </form>
+        </div>
+
+<div class="outer-source__image-container">
+    <img id="outer-source__image1" class="invisible" src="" alt="image" />
+</div>
+
+<div>
+    <h2 class="center">Outer Source Form (Back)</h2>
+        <form action="/outer_source" method="post">
+            <input type="text" name="id" placeholder="Insert ID (1-12)" required>
+            <input type="submit">
+        </form>
+</div>
+
+<div class="outer-source__image-container">
+    {% if user_from_api %}
+    <img src={{user_from_api["avatar"]}} alt="image" />
+    {% endif %}
+</div>
+
+      </div>
+      <div class="grid-item">
+        <h1 class="grid-item-header">Users</h1>
+        <p class="grid-item-hours">{% for user in users %}
+        <div >
+                {# {{ user }}#}
+            <h3>{{ user.name }}</h3>
+            <h4>Email: {{ user.email }}</h4>
+            <h3>Username: {{ user.user_name }}</h3>
+            <form action="/delete_user" method="post">
+            <input type="hidden" name="id" value={{user.id}}>
+            <input type="submit" value="delete">
+            </form>
+            <form action="/update_userS" method="post">
+            <input type="hidden" name="id" value={{user.id}}>
+            <input type="submit" value="update">
+            </form>
+        </div>
+
+    {% endfor %}
+        </p>
+      </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+

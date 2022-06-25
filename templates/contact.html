@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Contact</title>
+</head>
+{% include('header.html') %}
+<body>
+    <img src="{{url_for('static', filename='how-to-write-a-letter.jpg')}}" class="bg" />
+    <img src="{{url_for('static', filename='how-to-write-a-letter.png')}}" class="mobile-bg" />
+
+    <h1>Contact Form</h1>
+    <span>
+        <form action="" id="only-form">
+            <div class="form-row">
+                <label for="first_name">First Name *</label><br>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+            <div class="form-row">
+                <label for="last_name">Last Name *</label><br>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+            <div class="form-row">
+                <label for="email">Email *</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-row">
+                <label for="phone_number">Phone Number</label><br>
+                <input type="tel" id="phone_number" name="phone_number" minlength="10">
+            </div>
+            <div class="form-row">
+                <label for="subject">Subject *</label><br>
+                <input type="text" id="subject" name="subject" required><br>
+            </div>
+            <div class="form-row">
+                <textarea rows="5" cols="50" name="description">
+I just wanted to say something about home pages...
+                 </textarea>
+            </div>
+            <input type="submit" value="Submit" id="submit-btn">
+
+        </form>
+
+
+    </span>
+    {% set page = 'about' %}
+{% include('footer.html') %}
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+</body>
+
+</html>

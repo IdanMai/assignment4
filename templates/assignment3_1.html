@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% set title='assignment3_1' %}
+{% block title %}{{ title }} Page {% endblock %}
+{% set page = 'assignment3_1' %}
+{% block content %}
+
+<body>
+<div class="home-page__container">
+    {% if user_name == 'shay' %}
+    <h1 class="home-page__title">Hey There {{ user_name | default('someone', true)| title() }}, have a good day </h1>
+    {% else %}
+    <h1 class="home-page__title">Hey There {{ user_name | default('someone', true)| title() }}, you are not Shay! </h1>
+    {% endif %}
+    <p class="home-page__paragraph">This Website Costs {{ web_cost | default(450, true) | round(method = 'ceil') |
+        int()}} Dollars To Visit! </p>
+</div>
+<div class="teamContainer">
+    <h2 class="grid-item-header">My Top 4 {{subject | default('anything', true) | upper()}}</h2>
+    <p class="grid-item-content">I Have The Best {{subject | default('things', true)}}</p>
+    <div class="team">
+        <div class="card">
+            <div>
+                <img class="teamImg"
+                     src="{{url_for('static', filename='1.png')}}" alt="one">
+            </div>
+            <h4>{{top4[0]}}</h4>
+        </div>
+        <div class="card">
+            <div>
+                <img class="teamImg"
+                     src="{{url_for('static', filename='2.png')}}" alt="two">
+            </div>
+            <h4>{{top4[1]}}</h4>
+        </div>
+        <div class="card">
+            <div>
+                <img class="teamImg"
+                     src="{{url_for('static', filename='3.png')}}" alt="three">
+            </div>
+            <h4>{{top4[2]}}</h4>
+        </div>
+        <div class="card">
+            <div>
+                <img class="teamImg"
+                     src="{{url_for('static', filename='4.png')}}" alt="four">
+            </div>
+            <h4>{{top4[3]}}</h4>
+        </div>
+    </div>
+    <div>
+        <h2 class="grid-item-header">The Rest Of The {{subject | default('things', true)}} In No Special Order</h2>
+        <div class="home-page__container">
+            <ul>
+                {% for one in rest %}
+                <li>{{ one }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}
+{% block super_content %}
+    {{ super() }}
+{% endblock %}

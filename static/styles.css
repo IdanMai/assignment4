@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(188, 226, 126);
+}
+
+.bg{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.mobile-bg{
+    display: none;
+}
+
+header{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+header > a{
+    color: palevioletred;
+    padding: 3px;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+.LgI{
+    color: black;
+}
+
+
+h1{
+    font-size: 45px;
+}
+.center{
+    text-align: center;
+}
+
+#only-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row input{
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 2px 0 8px 0;
+    width: 100%;
+}
+
+.form-row textarea{
+    border: none;
+    resize: none;
+    background: transparent;
+    width: 25vw;
+}
+
+#submit-btn{
+    width: 100px;
+    font-size: 30px;
+    align-self: center;
+    margin-top: 130px;
+    border: none;
+    background: transparent;
+    color: palevioletred;
+}
+.home-page__container{
+    border: 5px solid white; 
+    margin-top: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-page__title{
+    font-size: 50px;
+    padding: 10px;
+    color: palevioletred;
+}
+.home-page__paragraph{
+    color: palevioletred;
+    font-size: 25px;
+    text-align: center;
+}
+.home-page__link{
+    text-align: center; 
+    color: palevioletred; 
+    font-size: 20px;
+}
+.home-page__container img{
+    border: 5px solid whitesmoke;
+    animation-name: enter-image;
+    animation-duration: 4s;
+    cursor: pointer;
+}
+
+.active-nav{
+    background-color: palevioletred; 
+    color: rgb(188, 226, 126);
+}
+.small-text{
+    font-size: 15px;
+}
+
+.spin{
+    transform: rotateY(180deg);
+}
+
+@keyframes enter-image {
+    from {width: 0;}
+    to {width: 287px;}
+}
+footer {
+    background-color: #26272b;
+    padding: 45px 0 20px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #737373;
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+footer:hover {
+    background-color: #737373;
+    color: #26272b;
+}
+
+.socials{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+.socials li{
+    margin: 0 10px;
+}
+.socials a{
+    text-decoration: none;
+    color: #fff;
+    border: 1.1px solid white;
+    padding: 5px;
+
+    border-radius: 50%;
+
+}
+.socials a i{
+    font-size: 1.1rem;
+    width: 20px;
+
+
+    transition: color .4s ease;
+
+}
+
+/* team section styling */
+.teamContainer {
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: rgba(250, 235, 215, 0.5);
+    width: 100%;
+
+}
+
+.teamImg {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.team {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    flex-wrap: wrap;
+    margin: 20px 10px;
+}
+
+.card {
+    padding: 10px;
+}
+
+.card h4,
+.card p {
+    width: 200px;
+    margin: 10px auto;
+}
+
+.user_container{
+    background-color: rgb(188, 226, 100);
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.outer-source__image-container{
+    max-height: 200px;
+}
+.invisible{
+    display: none;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 1px;
+    row-gap: 1px;
+}
+.grid-item {
+    text-align: center;
+    border-radius: 15px;
+
+    padding: 10px;
+    min-height: 150px;
+}
+
+.grid-item-header {
+    font-style: italic;
+}
+
+.grid-item-content {
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+    margin-left: 15px;
+
+}
+
+@media (max-width: 700px){
+    .bg{
+        display: none;
+    }
+    .mobile-bg{
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+    }
+    header{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .form-row textarea{
+        width: 35vw;
+    }
+    h1{
+        margin-top: -1px;
+    }
+    home-page__container img{
+        
+    }
+}
+
