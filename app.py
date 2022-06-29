@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, session, j
 from datetime import timedelta
 import mysql.connector
 
+
 app = Flask(__name__)
 
 app.secret_key = '123'

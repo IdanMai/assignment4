@@ -48,6 +48,9 @@ h1{
 .center{
     text-align: center;
 }
+.input{
+    width: 150px;
+}
 
 #only-form{
     display: flex;
@@ -221,14 +224,12 @@ footer:hover {
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     column-gap: 1px;
     row-gap: 1px;
 }
 .grid-item {
     text-align: center;
     border-radius: 15px;
-
     padding: 10px;
     min-height: 150px;
 }
