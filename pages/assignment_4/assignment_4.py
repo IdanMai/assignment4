@@ -1,5 +1,4 @@
 import os
-
 import mysql.connector
 from flask import Blueprint, render_template, request, redirect, jsonify
 import requests
@@ -21,14 +20,10 @@ def interact_db(query, query_type: str):
     #
 
     if query_type == 'commit':
-        # Use for INSERT, UPDATE, DELETE statements.
-        # Returns: The number of rows affected by the query (a non-negative int).
         connection.commit()
         return_value = True
 
     if query_type == 'fetch':
-        # Use for SELECT statement.
-        # Returns: False if the query failed, or the result of the query if it succeeded.
         query_result = cursor.fetchall()
         return_value = query_result
 
@@ -57,12 +52,11 @@ def index():
             return render_template('assignment_4.html', users=users_list)
 
     query = "INSERT INTO users(user_name, name, email, password) VALUES ('%s','%s', '%s', '%s')" % (username, name,
-                                                                                             email, password)
+                                                                                                    email, password)
     interact_db(query=query, query_type='commit')
     query = 'select * from users'
     users_list = interact_db(query, query_type='fetch')
     return render_template('assignment_4.html', users=users_list, message="changes made!")
-
 
 
 @assignment_4.route('/assignment_4/update_user', methods=['GET', 'POST'])
@@ -72,18 +66,19 @@ def update_user():
     email = request.form['email']
     password = request.form['password']
     id = request.form['id']
-    query = "UPDATE users SET name ='%s',email ='%s',password='%s', user_name='%s' WHERE id='%s';" % (name, email, password, username, id)
+    query = "UPDATE users SET name ='%s',email ='%s',password='%s', user_name='%s' WHERE id='%s';" % (
+        name, email, password, username, id)
     interact_db(query=query, query_type='commit')
     query = 'select * from users'
     users_list = interact_db(query, query_type='fetch')
     return render_template('assignment_4.html', users=users_list, message="changes made!")
 
 
-@assignment_4.route('/assignment_4/update_userS', methods=['GET','POST'])
+@assignment_4.route('/assignment_4/update_userS', methods=['GET', 'POST'])
 def update_userS():
     id = request.form['id']
     print(id)
-    return render_template('updateusers.html',id=id)
+    return render_template('updateusers.html', id=id)
 
 
 @assignment_4.route('/assignment_4/delete_user', methods=['GET', 'POST'])
@@ -116,7 +111,7 @@ def outer_source():
     users_list = interact_db(query, query_type='fetch')
     user_id = request.form['id']
     result = requests.get('https://reqres.in/api/users/' + user_id)
-    return render_template('assignment_4.html', user_from_api=result.json()['data'],users=users_list)
+    return render_template('assignment_4.html', user_from_api=result.json()['data'], users=users_list)
 
 
 @assignment_4.route('/assignment_4/restapi_users/', methods=['GET'])
@@ -137,10 +132,10 @@ def get_user(USER_ID):
     user = interact_db(query, query_type='fetch')[0]
     if user:
         users_dict = {
-                'username': user.user_name,
-                'email': user.email,
-                'name': user.name
-            }
+            'username': user.user_name,
+            'email': user.email,
+            'name': user.name
+        }
         return jsonify(users_dict)
     return jsonify({
         'error': '404',
